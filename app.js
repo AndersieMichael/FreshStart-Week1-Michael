@@ -5,11 +5,14 @@ const app = express()
 const port = 5000
 
 // app.use(express.urlencoded({extended:false}))
+//middleware untuk baca json dari body
 app.use(express.json())
 
 const people = require('./people')
-//middleware untuk baca json dari body
+
 const json = require('./json')
+
+const student = require('./studentAPI')
 
 app.get('/',(req,res)=>{
     res.send("Hello World")
@@ -26,6 +29,8 @@ app.post('/insert',(req,res)=>{
 app.use('/people',people)
 
 app.use('/json',json)
+
+app.use('/student',student)
 
 app.listen(port,()=>{
     console.log("Server is listening in port 5000");
